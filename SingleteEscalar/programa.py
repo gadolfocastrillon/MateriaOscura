@@ -4,7 +4,7 @@ import os
 ruta = 'micromegas_5.3.41/SingletDM/data2.par'
 
 rutaG = '''cd micromegas_5.3.41/SingletDM/\n
-./main data2.par > ~/Escritorio/trabajo_de_grado/MateriaOscura/SingleteEscalar/AlmacenarDatostemporal.dat
+./main data2.par > ~/Escritorio/trabajo_de_grado/MateriaOscura/SingleteEscalar/temporal.dat
 '''
 elimin = '\n==== Calculation of relic density ====='
 
@@ -22,20 +22,30 @@ laS    0.1
 
 def lya(Mdm1,laSH): 
 	#Abre el archivo y me almacena los datos
-	archivo = open('tempora.dat','r')
+	archivo = open('temporal.dat','r')
 	datos = archivo.read()
+	os.system('rm temporal.dat') #Elimina el archivo temporal.dat
 	archivo.close()
 
 	#Elimina la parte superior de la información
 	datosL = datos.strip(elimin).capitalize() 
 	#Separa el valor respectivo de la densidad reliquia
-	valor = float(datosL[datosL.find("omega="):datosL.find('\n')].strip("omega="))
+	val = float(datosL[datosL.find("omega="):datosL.find('\n')].strip("omega="))
 
 
 	if ((val<=0.132 )&(val>=0.108)): 
-		archivo = open('datosM.txt','a') #Abre el archivo para guardar los datos
-		archivo.write(str(Mdm1) + '	' +str(laSH)+ '	' +str(val)+'\n')
+		almacenar = str(Mdm1) + '	' +str(laSH)+ '	' +str(val)+'\n'
+		archivo = open('datosM2.txt','a') #Abre el archivo para guardar los datos
+		print(almacenar)
+		archivo.write(almacenar)
 		archivo.close()
+
+for masa in range(2000,10000,2):
+	for factor in np.arange(1e-2,1,0.01):
+		editar(masa,factor)
+		os.system(rutaG)
+		lya(masa,factor)
+
 
 #os.system('make main=main.c')
 #os.system('clear')
