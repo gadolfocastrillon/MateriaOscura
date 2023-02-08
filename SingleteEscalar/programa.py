@@ -1,9 +1,41 @@
 import numpy as np 
 import os 
 
-archivo = open('datos.txt','w')
-archivo.close()
+ruta = 'micromegas_5.3.41/SingletDM/data2.par'
 
+rutaG = '''cd micromegas_5.3.41/SingletDM/\n
+./main data2.par > ~/Escritorio/trabajo_de_grado/MateriaOscura/SingleteEscalar/AlmacenarDatostemporal.dat
+'''
+elimin = '\n==== Calculation of relic density ====='
+
+def editar(Mdm1,laSH): 
+	edicion = '''Q      14
+Mh     125
+laS    0.1
+'''
+	tex1 = 'laSH   '+ str(laSH)+'\n'
+	tex2 = 'Mdm1   '+ str(Mdm1)+'\n'
+	global ruta 
+	archivo= open(ruta,'w') 
+	archivo.write(edicion+tex1+tex2)
+	archivo.close()
+
+def lya(Mdm1,laSH): 
+	#Abre el archivo y me almacena los datos
+	archivo = open('tempora.dat','r')
+	datos = archivo.read()
+	archivo.close()
+
+	#Elimina la parte superior de la información
+	datosL = datos.strip(elimin).capitalize() 
+	#Separa el valor respectivo de la densidad reliquia
+	valor = float(datosL[datosL.find("omega="):datosL.find('\n')].strip("omega="))
+
+
+	if ((val<=0.132 )&(val>=0.108)): 
+		archivo = open('datosM.txt','a') #Abre el archivo para guardar los datos
+		archivo.write(str(Mdm1) + '	' +str(laSH)+ '	' +str(val)+'\n')
+		archivo.close()
 
 #os.system('make main=main.c')
 #os.system('clear')
@@ -15,27 +47,31 @@ Funcion editar:
 Este modifica el archivo de texto de data2.par, cambiando los parametros de Mdm1 y laS 
 te devuelve un vector llamado datos con la información del archivo de texto modificado. 
 '''
+'''
 def editar(Mdm1,laSH): 
 	datos = []
-	for linea in open("data2.par"): 
+	global ruta
+	for linea in open(ruta):
 		datos.append(linea)
 	datos[3] = 'laSH'+'   '+str(laSH)+'\n'
 	datos[4] = 'Mdm1' + '   '+ str(Mdm1)+'\n'
 	return datos
-
-
+'''
 '''
 Funcion escribir: 
 -Le ingresas un archivo de datos como el generado por editar y el se encarga de almacenarlo 
 en el archivo datos2.par con la misma sintasis.  
 '''
+'''
 def escribir(datos): 
-	archivo=open("data2.par",'w')
-	for i in datos: 
-		archivo.write(i)
+	archivo=open(ruta,'w')
+
 	archivo.close()
-
-
+'''
+#datos = editar(100,0.12)
+#print(datos)
+#escribir(datos)
+'''
 def analisis(Mdm1,laSH): 
 	import re 
 	datos = [] 
@@ -52,7 +88,11 @@ def analisis(Mdm1,laSH):
 		datos = []
 	archivo.close()
 
+'''
 
+
+
+'''
 for i in range(10,100,1):
 	for j in np.arange(0.01,1,0.01):
 		datos = editar(i,j)
@@ -61,3 +101,4 @@ for i in range(10,100,1):
 		analisis(i,j)
 
 
+'''
