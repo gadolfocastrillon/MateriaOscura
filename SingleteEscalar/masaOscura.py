@@ -3,7 +3,7 @@ class Moscura:
 		self.comando = './main data2.par>temporal.dat' 
 		#Comando para ejecutar el programa de materia oscura
 		self.almacenarDatos = 'datos.txt'
-		self.archivo = 'data2.par'
+		self.archivo = '/Escritorio/trabajo_de_grado/micromegas_5.3.41/SingletDM/data2.par'
 		self.inicioM = 10 #Inicio de la masa 
 		self.finalM = 10000 #Final de la masa 
 		self.pasoM = 1

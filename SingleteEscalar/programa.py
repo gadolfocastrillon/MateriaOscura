@@ -39,12 +39,15 @@ def lya(Mdm1,laSH):
 		print(almacenar)
 		archivo.write(almacenar)
 		archivo.close()
+		return True
 
-for masa in range(2000,10000,2):
-	for factor in np.arange(1e-2,1,0.01):
+
+for masa in range(61,200,1):
+	for factor in np.arange(1e-4,1e-1,1e-4):
 		editar(masa,factor)
 		os.system(rutaG)
-		lya(masa,factor)
+		if(lya(masa,factor)): 
+			break
 
 
 #os.system('make main=main.c')
