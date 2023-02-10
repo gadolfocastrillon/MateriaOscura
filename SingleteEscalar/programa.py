@@ -50,6 +50,8 @@ for masa in range(61,200,1):
 			break
 
 
+
+
 #os.system('make main=main.c')
 #os.system('clear')
 '''
@@ -100,10 +102,7 @@ def analisis(Mdm1,laSH):
 		archivo.write(str(Mdm1) + '	' +str(laSH)+ '	' +str(val)+'\n')
 		datos = []
 	archivo.close()
-
 '''
-
-
 
 '''
 for i in range(10,100,1):
@@ -112,6 +111,4 @@ for i in range(10,100,1):
 		escribir(datos)
 		os.system('./main data2.par>temporal.dat')
 		analisis(i,j)
-
-
 '''
