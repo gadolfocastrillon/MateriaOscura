@@ -1,14 +1,19 @@
 import numpy as np 
 import os 
-
+import pandas as pd 
 ruta = 'micromegas_5.3.41/SingletDM/data2.par'
 
 rutaG = '''cd micromegas_5.3.41/SingletDM/\n
 ./main data2.par > ~/Escritorio/trabajo_de_grado/MateriaOscura/SingleteEscalar/temporal.dat
 '''
 elimin = '\n==== Calculation of relic density ====='
+elimin2 = '''\n==== Calculation of CDM-nucleons amplitudes  ====='''
+elimin3 = '\n~x1-nucleon cross sections[pb] ===='
+rutaDatos = 'AlmacenarDatos/Datos.csv'
+#os.system(rutaG) 
 
 def editar(Mdm1,laSH): 
+	#print("ejecutando editar")
 	edicion = '''Q      14
 Mh     125
 laS    0.1
@@ -20,15 +25,64 @@ laS    0.1
 	archivo.write(edicion+tex1+tex2)
 	archivo.close()
 
+def temporal(): 
+	archivo = open('temporal.dat','r') 
+	datos = archivo.read() 
+	archivo.close() 
+	os.system('rm temporal.dat')
+	return datos
+
+def rutina2(ruta):
+	
+	df = pd.read_csv(ruta)
+	#print(df.head())
+	'''
+	editar(df.iloc[50]['Mass DM'],df.iloc[50]['SSHH'])
+	os.system(rutaG)
+	
+	archivo = temporal() 
+	print(archivo)
+	datos = archivo.strip(elimin2)
+
+	#val = float(datos[datos.find('proton:  si  '):datos.find('  sd  ')].strip('proton:  si  '))
+	valor1 = datos[datos.find('SI'):datos.find('SD')].strip('SI  ')
+	valor2 = datos[datos.find('SI',120):datos.find('SD',120)].strip('SI ')
+	'''
+	
+
+	dat1 = []
+	dat2 = [] 
+	for i in range(0,len(df)): 
+		editar(df.iloc[i]['Mass DM'],df.iloc[i]['SSHH'])
+		os.system(rutaG)
+		archivo = temporal()
+		#print(archivo)
+		datos = archivo.strip(elimin2).capitalize()
+		#print(datos)
+		#print(datos.find('si'))
+		valor1 = datos[datos.find('si'):datos.find('sd')].strip('si  ')
+		valor2 = datos[datos.find('si',120):datos.find('sd',120)].strip('si ')
+		dat1.append(valor1) 
+		dat2.append(valor2)
+	df['SI 1'] = dat1 
+	df['SI 2'] = dat2
+	
+	df.to_csv('AlmacenarDatos/InteraccionDM-P.csv', header=df.columns,index=False)
+
+rutina2(rutaDatos)
+
+
 def lya(Mdm1,laSH): 
+	
 	#Abre el archivo y me almacena los datos
 	archivo = open('temporal.dat','r')
 	datos = archivo.read()
-	os.system('rm temporal.dat') #Elimina el archivo temporal.dat
 	archivo.close()
+	os.system('rm temporal.dat') #Elimina el archivo temporal.dat
 
 	#Elimina la parte superior de la información
 	datosL = datos.strip(elimin).capitalize() 
+	datosL = temporal(elimin)
 	#Separa el valor respectivo de la densidad reliquia
 	val = float(datosL[datosL.find("omega="):datosL.find('\n')].strip("omega="))
 
@@ -41,14 +95,31 @@ def lya(Mdm1,laSH):
 		archivo.close()
 		return True
 
+'''
+generadorMSH genera los valores de masa y laSH que cumplan la condicion ingresada anteriormente
+-Minimo y maximo de la masa 
+-Minimo y maximo de lambda SH 
+-Paso de masa 
+-Paso de lambda SH 
+'''
+def generadorMSH(minM,maxM,minS,maxS,pasoM,pasoS):
+	global rutaG 
+	for masa in np.arange(minM,maxM,pasoM): 
+		for factor in np.arange(minS,maxS,pasoS): 
+			editar(masa,factor) 
+			os.system(rutaG)
+			if(lya(masa,factor)): 
+				break
 
+
+'''
 for masa in range(61,200,1):
 	for factor in np.arange(1e-4,1e-1,1e-4):
 		editar(masa,factor)
 		os.system(rutaG)
 		if(lya(masa,factor)): 
 			break
-
+'''
 
 
 

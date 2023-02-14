@@ -1,7 +1,7 @@
 import pandas as pd 
 import matplotlib.pyplot as plt 
 import numpy as np 
-archivo = open('Datos.txt')
+archivo = open('Datos.txt','r')
 datos=[]
 for linea in archivo: 
 	datos.append(linea.split())
@@ -28,6 +28,7 @@ for i in df['SSHH']:
 	except: 
 		pass
 
+df.to_csv('Datos.csv', header=['Mass DM','SSHH','omega'], index = False)
 
 plt.figure(figsize=(9,7)) 
 plt.title("Scalar Singlet",fontsize=25)
