@@ -1,6 +1,9 @@
 class Moscura: 
 	def __init__(self): 
-		self.comando = './main data2.par>temporal.dat' 
+		self.ruta =  'micromegas_5.3.41/SingletDM/data2.par' 
+		self.rutaG = '''cd micromegas_5.3.41/SingletDM/\n
+./main data2.par > ~/Escritorio/trabajo_de_grado/MateriaOscura/SingleteEscalar/temporal.dat
+'''
 		#Comando para ejecutar el programa de materia oscura
 		self.almacenarDatos = 'datos.txt'
 		self.archivo = '/Escritorio/trabajo_de_grado/micromegas_5.3.41/SingletDM/data2.par'
@@ -43,13 +46,10 @@ class Moscura:
 		return self.pasoSH 
 
 
-	def editar(self,Mdm1,laSH): 
-		datos = []
-		for linea in open(self.archivo): 
-			datos.append(linea) 
-		datos[3] = 'laSH'+'   '+str(laSH)+'\n'
-		datos[4] = 'Mdm1' + '   '+ str(Mdm1)+'\n'
-		return datos 
+	def editar(self,texto): 
+		archivo= open(ruta,'w') 
+		archivo.write(self.texto)
+		archivo.close()
 
 	def escribir(self,datos):
 		archivo = open(self.archivo,'w')

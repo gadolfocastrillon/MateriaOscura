@@ -1,0 +1,9 @@
+
+==== Calculation of relic density =====
+Xf=6.85e+00 Omega=9.20e+04
+# Channels which contribute to 1/(omega) more than 1%.
+# Relative contributions in % are displayed
+   86% ~x1 ~x1 ->b B 
+    7% ~x1 ~x1 ->l L 
+    4% ~x1 ~x1 ->c C 
+    2% ~x1 ~x1 ->G G 
