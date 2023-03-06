@@ -14,10 +14,10 @@
 //#define LILITH
 //#define SMODELS
   
-//#define OMEGA       /*  Calculate Freeze out relic density and display contribution of  individual channels */
+#define OMEGA       /*  Calculate Freeze out relic density and display contribution of  individual channels */
 //#define FREEZEIN  /*  Calculate relic density in Freeze-in scenario  */
    
-#define INDIRECT_DETECTION  
+//#define INDIRECT_DETECTION  
   /* Compute spectra of gamma/positron/antiprotons/neutrinos for DM annihilation; 
      Calculate <sigma*v>;
      Integrate gamma signal over DM galactic squared density for given line 

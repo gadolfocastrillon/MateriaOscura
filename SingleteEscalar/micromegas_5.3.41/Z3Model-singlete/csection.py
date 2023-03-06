@@ -10,7 +10,7 @@ def writer(file,dictionary):
 
 ruta = 'data.dat'
 rutaG = './main data.dat > temporal.dat'
-datos = np.loadtxt('Datos.txt') 
+datos = np.loadtxt('DatosCSB.txt') 
 dic = {'Mh':125, 'laphi':0.07,'laSH1':0.1,'Mp1':300,'mu32':1000,'Mtop':173.2}
 dic2 = {'Mh':125, 'laphi':0.07,'laSH1':0.1,'Mp1':300,'mu32':1000,'cross_section':0.0}
 newlist = []
@@ -20,8 +20,7 @@ def ejecutar(linea):
 	dic['mu32'] = linea[4] 
 	writer(ruta,dic)
 	subprocess.getoutput(rutaG)
-	#COMMAND = "grep 'cross section' temporal.dat | awk 'BEGIN{FS=\"=\"};{print $3}'"
-	COMMAND = "grep 'cross section' temporal.dat | awk '{print $4}'"
+	COMMAND = "grep 'proton  SI' temporal.dat | awk '{print $3}'"
 	dato = subprocess.getoutput(COMMAND)
 	dic2['laSH1'] = linea[2]
 	dic2['Mp1'] = linea[3]
@@ -34,6 +33,7 @@ def ejecutar(linea):
 	newlist.append([dic2['Mh'],dic2['laphi'],dic2['laSH1'],dic2['Mp1'],dic2['mu32'],dic2['cross_section']]) 
 
 #ejecutar(datos[0])
+
 irun = 0 
 for linea in datos: 
 	if(irun%100==0): 
@@ -41,4 +41,4 @@ for linea in datos:
 	ejecutar(linea)
 	irun+=1
 datos = np.asarray(newlist)
-np.savetxt('nuevos_datos.txt',datos)
+np.savetxt('DatosCSBB.txt',datos)

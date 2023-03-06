@@ -1,0 +1,15 @@
+./newproject Z3model-singlete ya se analizo el modelo z2 con un singlete
+entro al modelo 
+
+los archivos work/models
+reemplazar los archivos con los enviados por el profesor 
+main = main.c 
+En data.par tenemos 
+laphi autointeracion
+lash1 acomple higg masa oscura 
+mp1 masa particula de DM 
+
+
+hacer lo mismo pero para el Z3 variando: 
+
+seccion eficaz con proton vs masa en gev para 0.12 de densidad reliquia con un error de 10% el color es el valor de mu3 variado entre 100 y 10000 

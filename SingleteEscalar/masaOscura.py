@@ -51,6 +51,7 @@ class Moscura:
 		archivo.write(self.texto)
 		archivo.close()
 
+	def temporal() 
 	def escribir(self,datos):
 		archivo = open(self.archivo,'w')
 		for i in datos: 
