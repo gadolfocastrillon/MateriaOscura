@@ -44,14 +44,14 @@ def omega(dat):
 		newlist1.append([dat['Mh'],dat['laphi'],dat['laSH1'],dat['Mp1'],dat['mu32'],dat['Mtop']])
 
 
-for irun in range(0,20000,1): 
+for irun in range(0,50000,1): 
 	if(irun%100==0): 
 		print('irun='+str(irun) + ' time='+str(time.process_time()))
 	#Variación de los parametros.
-	Mp1 = np.random.uniform(150,300) 
+	Mp1 = np.random.uniform(1000,10000) 
 	#las1 = 10**( (log10(5e-2)-log10(1e-4))*np.random.uniform(0,1)+log10(1e-4))*(-1)**np.random.randint(0,2)
 	las1 = np.random.uniform(1e-4,1)
-	mu1 = np.random.uniform(10,1000)
+	mu1 = np.random.uniform(1000,10000)
 
 	dataD1['Mp1'] = Mp1  #Valores de la masa de la particulas.
 	dataD1['laSH1'] = las1 #Valores de laSH
@@ -62,7 +62,7 @@ for irun in range(0,20000,1):
 
 print('sltns=',sltns)
 datos = np.asarray(newlist1)
-np.savetxt('AlmacenarDatos/datos8.txt',datos)
+np.savetxt('AlmacenarDatos/datos13.txt',datos)
 '''
 plt.figure(figsize=(9,7)) 
 plt.plot(datos[4],datos[3],'k.')
