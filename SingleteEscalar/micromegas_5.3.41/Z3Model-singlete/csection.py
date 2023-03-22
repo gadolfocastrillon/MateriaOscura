@@ -10,7 +10,7 @@ def writer(file,dictionary):
 
 ruta = 'data.dat'
 rutaG = './main data.dat > temporal.dat'
-datos = np.loadtxt('DatosCSB.txt') 
+datos = np.loadtxt('DatosCSD.txt') 
 dic = {'Mh':125, 'laphi':0.07,'laSH1':0.1,'Mp1':300,'mu32':1000,'Mtop':173.2}
 dic2 = {'Mh':125, 'laphi':0.07,'laSH1':0.1,'Mp1':300,'mu32':1000,'cross_section':0.0}
 newlist = []
@@ -41,4 +41,4 @@ for linea in datos:
 	ejecutar(linea)
 	irun+=1
 datos = np.asarray(newlist)
-np.savetxt('DatosCSBB.txt',datos)
+np.savetxt('DatosCSDD.txt',datos)

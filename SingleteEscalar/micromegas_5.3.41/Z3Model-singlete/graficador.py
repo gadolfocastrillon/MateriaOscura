@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd 
 import matplotlib.pyplot as plt 
 
-datos = np.loadtxt('DatosCSBB.txt')
+datos = np.loadtxt('DatosCSDD.txt')
 df = pd.DataFrame(datos,columns=['MH','laphi','laSH','Mp','mu3','cs'])
 
 
@@ -14,7 +14,7 @@ ax.set_xscale('log')
 ax.set_yscale('log')
 im = ax.scatter(df['Mp'],df['cs'],c=df['mu3'],cmap='viridis')
 fig.colorbar(im)
-plt.xlim(0,1000)
+#plt.xlim(0,1000)
 plt.title("Singlete escalar con simetría $Z_{3}$")
 plt.ylabel("Cross Section ($\sigma_{SI}$)")
 plt.xlabel("Mass DM (GeV)")

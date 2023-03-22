@@ -98,7 +98,7 @@ def ejecutarOmega(direc,dictionary):
 		dictionary['Mp1'] = Mp1 
 		dictionary['laSH1'] = las1 
 		dictionary['mu32'] = mu1 
-
+		
 
 if __name__ = '__main__': 
 	dataD1 = {'Mh':125, 'laphi':0.07,'laSH1':0.1,'Mp1':300,'mu32':1000,'Mtop':173.2} #Diccionario con los datos del archivo.
