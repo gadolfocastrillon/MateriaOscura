@@ -11,6 +11,11 @@ def writer(file,dictionary):
 		data1.write("%s %s\n"%items)
 	data1.close()
 
+def samples_inside(x,chi_sq): 
+    delta_chi_sq = chi_sq - min_chi_sq
+    inside = delta_chi_sq <= critical_chi_sq
+    return x[:, inside]
+
 def omega(X):
 	m = X[0]
 	lam = X[1]
@@ -59,9 +64,15 @@ def gaussian(X):
 
 #------------------- Método para differential evolution --------------------
 def de_scan(dim,round_to_nearest=None): 
-	x1 = [] 
+	x = [] 
 	chi_sq = [] 
-	bounds = [(0,10),(1e-4,1e-3),(0,50)] #ligaduras
+	bounds = [(0,1000),(1e-4,1e-2),(0,5000)] #ligaduras
+
+	def objective(x_): 
+		chi_sq_ = gaussian(x_)
+		chi_sq.append(chi_sq_)
+		x.append(x_)
+		return chi_sq_
 	#strategy condiciones a cumplir la estrategia 
 	#popsize cantidad de individuos cantidatos a generar 
 	#tol tolerancia del problema? error del problema? 
@@ -73,26 +84,32 @@ def de_scan(dim,round_to_nearest=None):
 	#Especificar seed para minimizaciones repetibles.
 	#Polish se usa para pulir el mejor miembro de la población final, mejora ligeramente la minimización.
 	#Para problemas grandes con muchas restricciones, el pulido puede llevar mucho tiempo debido a los calculos jacobianos.
-	
+	differential_evolution(gaussian, bounds,
+                           strategy='rand1bin', maxiter=None,
+                           popsize=50, tol=0.01, mutation=(0.7, 1.99999), recombination=0.15,
+                           polish=False, seed=10)
+	'''
 	datos = differential_evolution(gaussian, bounds,
                            strategy='rand1bin', maxiter=None,
                            popsize=50, tol=0.01, mutation=(0.7, 1.99999), recombination=0.15,
-                           polish=False, seed=120)
+                           polish=False, seed=10)
 	'''
+
 	if round_to_nearest is not None: 
 		len_x = len(x)
 		keep_n = len_x - (len_x %round_to_nearest)
 		x = x[:keep_n]
 		chi_sq = chi_sq[:keep_n] 
+
 	#print(np.array(x))
-	#return samples_inside(np.array(x).T, np.array(chi_sq)),len(x)
+	return samples_inside(np.array(x).T, np.array(chi_sq)),len(x)
 	'''
 	print(datos.x)
 	data2=open("informacion.txt",'w')
 	data2.write(datos.x)
-	data2.close()
+	#data2.close()
 	return datos
-
+	'''
 #---------------------------------------------------------------------------
 
 #------------------------------Uso en la función main-----------------------
