@@ -3,13 +3,27 @@ import subprocess
 from scipy.optimize import differential_evolution 
 import matplotlib.pyplot as plt 
 import time 
+from scipy.stats import chi2
+
 dim = 3
 sltns = 0 
+
+min_chi_sq = 0.
+alpha = 0.05
+critical_chi_sq = chi2.isf(alpha,2)
+
 def writer(file,dictionary):
 	data1=open(file,'w')
 	for items in dictionary.items(): 
 		data1.write("%s %s\n"%items)
 	data1.close()
+
+def writer2(x,file):
+	data = open(file,'w') 
+	for i in x: 
+		texto = str(i[0]) + " " + str(i[1]) + " " +str(i[2])+"\n"
+		data.write(texto)
+	data.close()
 
 def samples_inside(x,chi_sq): 
     delta_chi_sq = chi_sq - min_chi_sq
@@ -66,7 +80,7 @@ def gaussian(X):
 def de_scan(dim,round_to_nearest=None): 
 	x = [] 
 	chi_sq = [] 
-	bounds = [(0,1000),(1e-4,1e-2),(0,5000)] #ligaduras
+	bounds = [(0,1000),(1e-4,1),(0,10000)] #ligaduras
 
 	def objective(x_): 
 		chi_sq_ = gaussian(x_)
@@ -84,7 +98,8 @@ def de_scan(dim,round_to_nearest=None):
 	#Especificar seed para minimizaciones repetibles.
 	#Polish se usa para pulir el mejor miembro de la población final, mejora ligeramente la minimización.
 	#Para problemas grandes con muchas restricciones, el pulido puede llevar mucho tiempo debido a los calculos jacobianos.
-	differential_evolution(gaussian, bounds,
+	
+	differential_evolution(objective, bounds,
                            strategy='rand1bin', maxiter=None,
                            popsize=50, tol=0.01, mutation=(0.7, 1.99999), recombination=0.15,
                            polish=False, seed=10)
@@ -93,16 +108,21 @@ def de_scan(dim,round_to_nearest=None):
                            strategy='rand1bin', maxiter=None,
                            popsize=50, tol=0.01, mutation=(0.7, 1.99999), recombination=0.15,
                            polish=False, seed=10)
+	
 	'''
-
+	
+	
 	if round_to_nearest is not None: 
 		len_x = len(x)
 		keep_n = len_x - (len_x %round_to_nearest)
 		x = x[:keep_n]
 		chi_sq = chi_sq[:keep_n] 
-
+	
+	#print(x)
 	#print(np.array(x))
-	return samples_inside(np.array(x).T, np.array(chi_sq)),len(x)
+	#return samples_inside(np.array(x).T, np.array(chi_sq)),len(x)
+	return x
+	
 	'''
 	print(datos.x)
 	data2=open("informacion.txt",'w')
@@ -119,9 +139,10 @@ if __name__ == '__main__':
 	print("Running de_scan") 
 	t0 = time.time()
 	#x, calls = de_scan(dim,round_to_nearest=1000) 
-	x = de_scan(dim,round_to_nearest=1000) 
+	#x = de_scan(dim,round_to_nearest=10000) 
+	x = de_scan(dim,round_to_nearest=1000)
+	writer2(x,"AlmacenarDatos/datosLikelihood3.txt") 
 	de_time = time.time() - t0 
 	print("Plotting de_scan") 
 	print(r'Tiempo de ejecución : '+ str(de_time)) #Imprime el tiempo que demora en ejecutar el progama.
-	print(x)
 #---------------------------------------------------------------------------
