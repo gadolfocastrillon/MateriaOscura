@@ -5,14 +5,20 @@ from scipy.stats import chi2
 import matplotlib.pyplot as plt 
 import time 
 
-
-
 dim = 4
 sltns = 0 
 min_chi_sq = 0.
 alpha = 0.05
 critical_chi_sq = chi2.isf(alpha,2)
 data_vector = [] 
+
+#Valores de ligadura 
+lash_min = 1e-4
+lash_max = 1
+mass_min = 2e3
+mass_max = 1e4
+mu_min = 0
+mu_max = 9000
 
 min_chi_sq = 0.
 alpha = 0.05
@@ -72,7 +78,7 @@ def omega(X):
 	writer(ruta,data) 
 	#----------------------------------------------------------------------
 
-	#--------------------Obtener el valor de la densiadad reliquia --------
+	#--------------------Obtener el valor de la densidad reliquia --------
 	omeg = 0.0 
 	#Corriendo micromegas y extrayendo la densidad reliquia 
 	subprocess.getoutput(rutaG)
@@ -111,13 +117,14 @@ def de_scan(dim,round_to_nearest=None):
 	chi_sq = []
 	cs =[] 
 	#lambdaSH, Masa, Mu3
-	bounds = [(1e-4,1),(100,200),(0,10000)] #ligaduras
+	bounds = [(lash_min,lash_max),(mass_min,mass_max),(mu_min,mu_max)] #ligaduras
 	def objective(x_):
 		chi_sq_ = gaussian(x_)
 		chi_sq.append(chi_sq_)
 		x.append(x_)
 		cross = csection()
 		cs.append(cross)
+		
 		#print(x_,cross)
 		if (len(x) % 10000 == 0):
 			print(len(x))
@@ -137,7 +144,7 @@ def de_scan(dim,round_to_nearest=None):
 	
 	differential_evolution(objective, bounds,
                            strategy='rand1bin', maxiter=None,
-                           popsize=100, tol=0.01, mutation=(0.7, 1.99999), recombination=0.15,
+                           popsize=25, tol=0.01, mutation=(0.7, 1.99999), recombination=0.15,
                            polish=False, seed=120)
 	
 	valor = np.array(x).T
@@ -169,7 +176,7 @@ if __name__ == '__main__':
 	x, calls  = de_scan(dim) 	
 	#calls me devuelve el tamaño de los datos 
 	#x es un arreglo con: x[0]:lambdahs, x[1]: MasaS, x[2]: Mu3, x[3]: cross section.
-	writer2(x.T,"AlmacenarDatos/datosLikelihood-modificado-P100.txt") 
+	writer2(x.T,"AlmacenarDatos/datosLikelihood-mass2000-10000.txt") 
 	de_time = time.time() - t0 
 	print(r'Tiempo de ejecución : '+ str(de_time)) #Imprime el tiempo que demora en ejecutar el progama.
 	print("Finalizado")
@@ -193,6 +200,6 @@ if __name__ == '__main__':
 	plt.title("Singlete escalar con simetría $Z_{3}$")
 	plt.ylabel("Cross Section ($\sigma_{SI}$)")
 	plt.xlabel("Mass DM (GeV)")
-	plt.savefig('AlmacenarDatos/mapeo_de_datos_likelihood6.svg')
+	plt.savefig('AlmacenarDatos/mapeo_de_datos_likelihood-3.svg')
 	plt.show()
 #---------------------------------------------------------------------------

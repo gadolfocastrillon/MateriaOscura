@@ -1,0 +1,42 @@
+
+Dark matter candidate is '~phi1' with spin=0/2 mass=6.46E+03
+
+==== Calculation of relic density =====
+Xf=2.02e+01 Omega=1.80e+02
+# Channels which contribute to 1/(omega) more than 1%.
+# Relative contributions in % are displayed
+   50% ~phi1 ~PHI1 ->W+ W- 
+   25% ~phi1 ~PHI1 ->h h 
+   25% ~phi1 ~PHI1 ->Z Z 
+
+==== Indirect detection =======
+    Channel          vcs[cm^3/s]
+problem in simpson file spectra.c line 685
+a=1.438837E-03 b=8.945385E+00 depth=0 depth1=31  nErr=0 
+a=1.438837E-03 b=4.473412E+00 depth=1 depth1=31  nErr=0 
+a=1.438837E-03 b=2.237425E+00 depth=2 depth1=31  nErr=0 
+a=1.438837E-03 b=1.119432E+00 depth=3 depth1=31  nErr=0 
+a=1.438837E-03 b=5.604355E-01 depth=4 depth1=31  nErr=0 
+a=1.438837E-03 b=2.809372E-01 depth=5 depth1=31  nErr=0 
+a=1.438837E-03 b=1.411880E-01 depth=6 depth1=31  nErr=0 
+a=1.438837E-03 b=7.131342E-02 depth=7 depth1=31  nErr=0 
+a=1.438837E-03 b=3.637613E-02 depth=8 depth1=31  nErr=0 
+a=1.438837E-03 b=1.890748E-02 depth=9 depth1=31  nErr=0 
+a=1.438837E-03 b=1.017316E-02 depth=10 depth1=31  nErr=0 
+a=1.438837E-03 b=5.805998E-03 depth=11 depth1=31  nErr=0 
+a=1.438837E-03 b=3.622417E-03 depth=12 depth1=31  nErr=0 
+a=1.438837E-03 b=2.530627E-03 depth=13 depth1=31  nErr=0 
+a=2.530627E-03 b=3.622417E-03 depth=13 depth1=31  nErr=0 
+a=3.622417E-03 b=5.805998E-03 depth=12 depth1=31  nErr=4 
+a=5.805998E-03 b=1.017316E-02 depth=11 depth1=31  nErr=4 
+a=1.017316E-02 b=1.890748E-02 depth=10 depth1=31  nErr=4 
+a=1.890748E-02 b=3.637613E-02 depth=9 depth1=31  nErr=4 
+a=3.637613E-02 b=7.131342E-02 depth=8 depth1=31  nErr=4 
+a=7.131342E-02 b=1.411880E-01 depth=7 depth1=31  nErr=4 
+a=1.411880E-01 b=2.809372E-01 depth=6 depth1=31  nErr=4 
+a=2.809372E-01 b=5.604355E-01 depth=5 depth1=31  nErr=4 
+a=5.604355E-01 b=1.119432E+00 depth=4 depth1=31  nErr=4 
+a=1.119432E+00 b=2.237425E+00 depth=3 depth1=31  nErr=4 
+a=2.237425E+00 b=4.473412E+00 depth=2 depth1=31  nErr=4 
+a=4.473412E+00 b=8.945385E+00 depth=1 depth1=31  nErr=4 
+simpson warnings:Lost of precision.

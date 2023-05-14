@@ -17,7 +17,7 @@
 #define OMEGA       /*  Calculate Freeze out relic density and display contribution of  individual channels */
 //#define FREEZEIN  /*  Calculate relic density in Freeze-in scenario  */
    
-//#define INDIRECT_DETECTION  
+#define INDIRECT_DETECTION  
   /* Compute spectra of gamma/positron/antiprotons/neutrinos for DM annihilation; 
      Calculate <sigma*v>;
      Integrate gamma signal over DM galactic squared density for given line 
@@ -48,7 +48,7 @@
 /*===== Options ========*/
 /*#define SHOWPLOTS*/
      /* Display  graphical plots on the screen */ 
-#define CLEAN
+//#define CLEAN
 /*===== End of DEFINE  settings ===== */
 
 
@@ -306,34 +306,34 @@ printf("\n==== Indirect detection =======\n");
   { 
      double fi=0.1,dfi=0.05; /* angle of sight and 1/2 of cone angle in [rad] */ 
 
-     gammaFluxTab(fi,dfi, sigmaV, SpA,  FluxA);     
-     printf("Photon flux  for angle of sight f=%.2f[rad]\n"
-     "and spherical region described by cone with angle %.2f[rad]\n",fi,2*dfi);
+     //gammaFluxTab(fi,dfi, sigmaV, SpA,  FluxA);     
+     //printf("Photon flux  for angle of sight f=%.2f[rad]\n"
+     //"and spherical region described by cone with angle %.2f[rad]\n",fi,2*dfi);
 #ifdef SHOWPLOTS
-     sprintf(txt,"Photon flux for angle of sight %.2f[rad] and cone angle %.2f[rad]",fi,2*dfi);
-     displayPlot(txt,"E[GeV]",Emin,Mcdm,0,1,"",0,SpectdNdE,FluxA);
+     //sprintf(txt,"Photon flux for angle of sight %.2f[rad] and cone angle %.2f[rad]",fi,2*dfi);
+     //displayPlot(txt,"E[GeV]",Emin,Mcdm,0,1,"",0,SpectdNdE,FluxA);
 #endif
-     printf("Photon flux = %.2E[cm^2 s GeV]^{-1} for E=%.1f[GeV]\n",SpectdNdE(Etest, FluxA), Etest);       
+     //printf("Photon flux = %.2E[cm^2 s GeV]^{-1} for E=%.1f[GeV]\n",SpectdNdE(Etest, FluxA), Etest);       
   }
 
 //  if(SpE)
   { 
     posiFluxTab(Emin, sigmaV, SpE,  FluxE);
 #ifdef SHOWPLOTS     
-    displayPlot("positron flux [cm^2 s sr GeV]^{-1}","E[GeV]",Emin,Mcdm,0,1,"",0,SpectdNdE,FluxE);
+    //displayPlot("positron flux [cm^2 s sr GeV]^{-1}","E[GeV]",Emin,Mcdm,0,1,"",0,SpectdNdE,FluxE);
 #endif
-    printf("Positron flux  =  %.2E[cm^2 sr s GeV]^{-1} for E=%.1f[GeV] \n",
-    SpectdNdE(Etest, FluxE),  Etest);           
+    //printf("Positron flux  =  %.2E[cm^2 sr s GeV]^{-1} for E=%.1f[GeV] \n",
+    //SpectdNdE(Etest, FluxE),  Etest);           
   }
   
 //  if(SpP)
   { 
     pbarFluxTab(Emin, sigmaV, SpP,  FluxP  ); 
 #ifdef SHOWPLOTS    
-     displayPlot("antiproton flux [cm^2 s sr GeV]^{-1}","E[GeV]",Emin,Mcdm,0,1,"",0,SpectdNdE,FluxP);
+     //displayPlot("antiproton flux [cm^2 s sr GeV]^{-1}","E[GeV]",Emin,Mcdm,0,1,"",0,SpectdNdE,FluxP);
 #endif
-    printf("Antiproton flux  =  %.2E[cm^2 sr s GeV]^{-1} for E=%.1f[GeV] \n",
-    SpectdNdE(Etest, FluxP),  Etest);             
+    //printf("Antiproton flux  =  %.2E[cm^2 sr s GeV]^{-1} for E=%.1f[GeV] \n",
+    //SpectdNdE(Etest, FluxP),  Etest);             
   }
 }  
 #endif
