@@ -1,0 +1,37 @@
+
+Dark matter candidate is '~phi1' with spin=0/2 mass=1.79E+03
+
+==== Calculation of relic density =====
+Xf=2.63e+01 Omega=1.23e-01
+# Channels which contribute to 1/(omega) more than 1%.
+# Relative contributions in % are displayed
+   48% ~phi1 ~PHI1 ->W+ W- 
+   24% ~phi1 ~PHI1 ->Z Z 
+   23% ~phi1 ~PHI1 ->h h 
+    4% ~phi1 ~phi1 ->h ~PHI1 
+
+==== Indirect detection =======
+    Channel          vcs[cm^3/s]
+problem in simpson file spectra.c line 685
+a=1.215037E-03 b=5.765284E-01 depth=0 depth1=31  nErr=0 
+a=1.215037E-03 b=2.888717E-01 depth=1 depth1=31  nErr=0 
+a=1.215037E-03 b=1.450434E-01 depth=2 depth1=31  nErr=0 
+a=1.215037E-03 b=7.312921E-02 depth=3 depth1=31  nErr=0 
+a=1.215037E-03 b=3.717212E-02 depth=4 depth1=31  nErr=0 
+a=1.215037E-03 b=1.919358E-02 depth=5 depth1=31  nErr=0 
+a=1.215037E-03 b=1.020431E-02 depth=6 depth1=31  nErr=0 
+a=1.215037E-03 b=5.709673E-03 depth=7 depth1=31  nErr=0 
+a=1.215037E-03 b=3.462355E-03 depth=8 depth1=31  nErr=0 
+a=1.215037E-03 b=2.338696E-03 depth=9 depth1=31  nErr=0 
+a=2.338696E-03 b=3.462355E-03 depth=9 depth1=31  nErr=0 
+a=2.338696E-03 b=2.900526E-03 depth=10 depth1=31  nErr=0 
+a=2.900526E-03 b=3.462355E-03 depth=10 depth1=31  nErr=0 
+a=3.462355E-03 b=5.709673E-03 depth=8 depth1=31  nErr=4 
+a=5.709673E-03 b=1.020431E-02 depth=7 depth1=31  nErr=4 
+a=1.020431E-02 b=1.919358E-02 depth=6 depth1=31  nErr=4 
+a=1.919358E-02 b=3.717212E-02 depth=5 depth1=31  nErr=4 
+a=3.717212E-02 b=7.312921E-02 depth=4 depth1=31  nErr=4 
+a=7.312921E-02 b=1.450434E-01 depth=3 depth1=31  nErr=4 
+a=1.450434E-01 b=2.888717E-01 depth=2 depth1=31  nErr=4 
+a=2.888717E-01 b=5.765284E-01 depth=1 depth1=31  nErr=4 
+simpson warnings:Lost of precision.

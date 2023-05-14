@@ -1,0 +1,24 @@
+
+Dark matter candidate is '~phi1' with spin=0/2 mass=2.53E+02
+
+==== Calculation of relic density =====
+Xf=2.45e+01 Omega=1.19e-01
+# Channels which contribute to 1/(omega) more than 1%.
+# Relative contributions in % are displayed
+   42% ~phi1 ~PHI1 ->W+ W- 
+   22% ~phi1 ~PHI1 ->h h 
+   20% ~phi1 ~PHI1 ->Z Z 
+   13% ~phi1 ~PHI1 ->t T 
+    4% ~phi1 ~phi1 ->h ~PHI1 
+
+==== Indirect detection =======
+    Channel          vcs[cm^3/s]
+==================================
+ annihilation cross section 2.30E-26 cm^3/s
+ contribution of processes
+  ~phi1,~PHI1 -> W+ W-  4.00E-01
+  ~phi1,~PHI1 -> h h    2.10E-01
+  ~phi1,~PHI1 -> Z Z    1.91E-01
+  ~phi1,~PHI1 -> t T    1.27E-01
+  ~phi1,~phi1 -> h ~PH  3.58E-02
+  ~PHI1,~PHI1 -> h ~ph  3.58E-02
