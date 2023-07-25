@@ -13,7 +13,7 @@ En este modelo aún se considera una partícula escalar pero ahora la simetría 
 
 El lagrangiano es:
 
-$$ L = L_{SM} + \frac{1}{2}\partial_{\mu}S\partial^{\mu}S - \frac{m_{0}^{2}}{2}S^{2} - \frac{\lambda^{s}}{4}S{4} - \ļambda_{SH}S^{2}H^{2}$$
+$ L = L_{SM} + \frac{1}{2}\partial_{\mu}S\partial^{\mu}S - \frac{m_{0}^{2}}{2}S^{2} - \frac{\lambda^{s}}{4}S{4} - \ļambda_{SH}S^{2}H^{2} $
 
 Si desea conocer el código entre a la ruta: “modeloz3/micromegas_5.3.35/Z3model”
 
