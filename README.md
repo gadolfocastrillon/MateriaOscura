@@ -11,7 +11,9 @@ Si desea conocer el código entre a la ruta: “modeloz2/micromegas_5.3.35/Singl
 # Singlete escalar con simetría Z3. 
 En este modelo aún se considera una partícula escalar pero ahora la simetría del lagrangiano es una simetría Z3, las variaciones del modelo anterior es que el tratado aquí posee procesos de semiaquilación. 
 
-El lagrangiano es: 
+El lagrangiano es:
+
+$$ L = L_{SM} + \frac{1}{2}\partial_{\mu}S\partial^{\mu}S - \frac{m_{0}^{2}}{2}S^{2} - \frac{\lambda^{s}}{4}S{4} - \ļambda_{SH}S^{2}H^{2}$$
 
 Si desea conocer el código entre a la ruta: “modeloz3/micromegas_5.3.35/Z3model”
 
