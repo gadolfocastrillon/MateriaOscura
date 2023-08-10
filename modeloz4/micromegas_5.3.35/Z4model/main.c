@@ -3,10 +3,10 @@
    various modules of micrOMEGAs  
 ================================*/
       
-#define MASSES_INFO      
+//#define MASSES_INFO      
   /* Display information about mass spectrum  */
   
-#define CONSTRAINTS 
+//#define CONSTRAINTS 
 
 //#define MONOJET
 //#define HIGGSBOUNDS 
@@ -17,7 +17,7 @@
 #define OMEGA       /*  Calculate Freeze out relic density and display contribution of  individual channels */
 //#define FREEZEIN  /*  Calculate relic density in Freeze-in scenario  */
    
-#define INDIRECT_DETECTION  
+//#define INDIRECT_DETECTION  
   /* Compute spectra of gamma/positron/antiprotons/neutrinos for DM annihilation; 
      Calculate <sigma*v>;
      Integrate gamma signal over DM galactic squared density for given line 
@@ -30,16 +30,16 @@
     DM velocity distribution,
     A-dependence of Fermi-dencity
   */     
-#define CDM_NUCLEON     
+//#define CDM_NUCLEON     
   /* Calculate amplitudes and cross-sections for  CDM-mucleon collisions */  
 
-#define CDM_NUCLEUS     
+//#define CDM_NUCLEUS     
      // Calculate  exclusion rate for direct detection experiments Xenon1T, DarkSide50, CRESST, and PICO 
          
 //#define NEUTRINO    
  /*  Neutrino signal of DM annihilation in Sun and Earth */
 
-#define DECAYS
+//#define DECAYS
 
 //#define CROSS_SECTIONS 
   
@@ -48,7 +48,7 @@
 /*===== Options ========*/
 /*#define SHOWPLOTS*/
      /* Display  graphical plots on the screen */ 
-#define CLEAN
+//#define CLEAN
 /*===== End of DEFINE  settings ===== */
 
 
